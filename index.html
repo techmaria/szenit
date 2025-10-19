@@ -46,8 +46,6 @@
       <a href="https://drive.google.com/file/d/1CO1h744XI5BuxiKYPI-NJCzl7ET9fUcl/view?usp=drive_link" target="blank">📘 Download Free CCNA Starter eBook</a> </div>
   </section>
 
-
- 
 <!-- WHY CHOOSE SECTION -->
 <section class="why-choose">
   <div class="why-choose-wrapper">
@@ -70,7 +68,6 @@
     
   </div>
 </section>
-
 
   <!-- SUCCESS STORIES SECTION -->
 <section class="success">
@@ -105,7 +102,6 @@
 </div>
 </div>
 </section>
-
 
   <!-- FAQ SECTION -->
   <section class="faq">
@@ -247,8 +243,6 @@
   </section>
 </section>
 
-  
-
 <!-- CONTACT -->
 <section class="container-contacts" id="contact">
   <h3 class="section-title">Contact Us</h3>
@@ -264,7 +258,6 @@
 </section>
 </center>
 
-
 <!-- FOOTER -->
 <footer>
   <p>© 2025 SZEN IT TRAINING CENTER. All Rights Reserved.</p>
@@ -277,12 +270,10 @@
   </div>
 </footer>
 
-
 <div class="floating-buttons">
   <a href="https://m.me/techria" target="_blank" class="float-btn">💬 <span>Chat Now</span></a>
   <a href="tel:+639943588304" class="float-btn">📞<span>Call Now</span></a>
 </div>
-
 
 <script>
   function scrollToProducts() {
@@ -290,13 +281,73 @@
   }
 </script>
 
-
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
 <script>
   Fancybox.bind('[data-fancybox="slider"]', {
     dragToClose: true,
     animated: true,
   });
+</script>
+
+<script>
+  const sections = document.querySelectorAll("section");
+  let scrollLock = false;
+
+  function scrollToSection(direction) {
+    const current = Math.round(window.scrollY / window.innerHeight);
+    let next = direction === "down" ? current + 1 : current - 1;
+
+    if (next >= 0 && next < sections.length) {
+      scrollLock = true;
+      window.scrollTo({
+        top: sections[next].offsetTop,
+        behavior: "smooth",
+      });
+      setTimeout(() => (scrollLock = false), 1000);
+    }
+  }
+
+  window.addEventListener("wheel", function (e) {
+    if (scrollLock) return;
+    if (e.deltaY > 0) {
+      scrollToSection("down");
+    } else {
+      scrollToSection("up");
+    }
+  });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = [
+    document.querySelector(".hero"),
+    document.querySelector(".why-choose"),
+    document.querySelector(".success"),
+    document.querySelector(".faq"),
+    document.querySelector("#enroll"),
+    document.querySelector("#freebies"),
+  ].filter(Boolean); // Ensure only existing sections
+
+  let isScrolling = false;
+  let currentIndex = 0;
+
+  const scrollToSection = (index) => {
+    if (index < 0 || index >= sections.length) return;
+    isScrolling = true;
+    currentIndex = index;
+    sections[index].scrollIntoView({ behavior: "smooth" });
+    setTimeout(() => (isScrolling = false), 900); // lock scroll briefly
+  };
+
+  window.addEventListener("wheel", (e) => {
+    if (isScrolling) return;
+    if (e.deltaY > 0 && currentIndex < sections.length - 1) {
+      scrollToSection(currentIndex + 1);
+    } else if (e.deltaY < 0 && currentIndex > 0) {
+      scrollToSection(currentIndex - 1);
+    }
+  }, { passive: false });
+});
 </script>
 </body>
 </html>

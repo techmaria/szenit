@@ -320,7 +320,7 @@ section {
 .success {
   background: #f7f9fb;
   text-align: center;
-  padding: 60px 20px;
+  padding: 20px 20px;
   min-height: 100vh;   
   height: auto;        
   display: flex;
@@ -705,4 +705,16 @@ section {
     }
   }
 
-
+.hero,
+.why-choose,
+.success,
+.faq,
+.products {
+  min-height: 100vh;
+  scroll-snap-align: start;
+}
+.snap-wrapper {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}

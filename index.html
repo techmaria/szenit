@@ -349,5 +349,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { passive: false });
 });
 </script>
+
+<script>
+/* Disable scroll-lock on mobile devices */
+window.addEventListener("load", () => {
+  if (window.innerWidth < 768) {
+    window.removeEventListener("wheel", window.handleScroll, false);
+    document.body.style.overflowY = "auto";
+  }
+});
+</script>
 </body>
 </html>

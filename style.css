@@ -345,6 +345,13 @@ section {
   gap: 30px;
   justify-items: center;
 }
+
+.product-grid2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
 .product img {
   display: block;
   margin: 0 auto;
